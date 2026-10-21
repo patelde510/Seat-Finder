@@ -45,7 +45,7 @@ guests can find their entry even with imperfect input.
 - Rationale: wedding context — tired, mobile-typing guests. Prefer showing
   2 candidates over showing zero. Guest names are unique enough that
   false positives are low-risk.
-- Acceptance: "Smih" → "Smith", "Saumy" → "Saumya", "Mahke" → "Mahek" all
+- Acceptance: "Smih" → "Smith", "Dina" → "Digna", "Jayy" → "Jay" all
   return the correct guest in top-3.
 
 ### Search fields
@@ -58,8 +58,8 @@ guests can find their entry even with imperfect input.
 - **Tier 1:** Exact substring matches (prefix preferred over contains)
   always rank above fuzzy matches.
 - **Tier 2:** Fuse fuzzy matches below substring hits, ordered by Fuse score.
-- Rationale: guest typing "Mah" should see "Mahek Patel" before any
-  fuzzy-matched "Max Patel". Protects against surprising fuzzy ranking.
+- Rationale: guest typing "Dig" should see the prefix match "Digna" before
+  any contains or fuzzy matches. Protects against surprising fuzzy ranking.
 
 ### Minimum query length
 - **1 character** — start searching immediately on the first keystroke.
@@ -127,13 +127,13 @@ guests can find their entry even with imperfect input.
 
 - Test cases to validate against:
   - "Smih" → "Smith" found
-  - "Saumy" → "Saumya" found in top-3
-  - "Mah" → "Mahek Patel" ranked #1 (substring-first)
+  - "Jayy" → "Jay" found in top-3
+  - "Dig" → "Digna" ranked #1 (substring-first)
   - "xyz" (no match) → clean "No guests match 'xyz'..." message
   - Empty input → empty dropdown (current behavior preserved)
 
-- Highlighting example: if query is "mah" and result is "Mahek Patel",
-  render as **Mah**ek Patel with bold on matched chars only.
+- Highlighting example: if query is "dig" and result is "Digna",
+  render as **Dig**na with bold on matched chars only.
 
 </specifics>
 

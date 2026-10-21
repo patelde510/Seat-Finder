@@ -33,9 +33,9 @@ export default defineConfig({
       includeAssets: ['apple-touch-icon.png'],
 
       manifest: {
-        name: 'Seat Finder — Mahek & Saumya',
+        name: 'Seat Finder — Digna & Jay',
         short_name: 'Seat Finder',
-        description: "Find your table at Mahek & Saumya's wedding reception.",
+        description: "Find your table at Digna & Jay's wedding reception.",
         theme_color: '#2b2d42',
         background_color: '#edf2f4',
         display: 'standalone',

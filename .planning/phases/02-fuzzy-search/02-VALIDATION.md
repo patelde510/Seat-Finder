@@ -67,7 +67,7 @@ created: 2026-04-14
 | Behavior | Requirement | Why Manual | Test Instructions |
 |----------|-------------|------------|-------------------|
 | Search-as-you-type feels snappy on mobile | SRCH-02 | Perceived latency requires human judgment | Type a 5-char name on phone; confirm results update visibly per keystroke with no lag |
-| Match highlighting visually readable | SRCH-03 | Visual rendering quality | Search "mah" → "**Mah**ek Patel" renders with bold weighted correctly, not ALL-caps or hard to read |
+| Match highlighting visually readable | SRCH-03 | Visual rendering quality | Search "dig" → "**Dig**na" renders with bold weighted correctly, not ALL-caps or hard to read |
 | No-results state feels reassuring, not alarming | SRCH-04 | Copy tone is subjective | Search "xyz" → message reads as helpful hint, not error |
 | iOS Safari autocorrect doesn't break search | SRCH-01 | Platform-specific behavior | Type "Smih" on iPhone Safari; autocorrect may intervene — verify result still found regardless |
 

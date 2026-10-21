@@ -52,7 +52,7 @@ Success criteria (from ROADMAP.md):
 - **D-12:** Do include an iOS-friendly meta config (`apple-touch-icon`, `apple-mobile-web-app-capable`, `apple-mobile-web-app-status-bar-style`) so that guests who DO add to homescreen get a proper app-like experience (no Safari chrome, themed status bar).
 
 ### PWA branding
-- **D-13:** App name = `"Seat Finder — Mahek & Saumya"`. Short name (homescreen label) = `"Seat Finder"`.
+- **D-13:** App name = `"Seat Finder — Digna & Jay"`. Short name (homescreen label) = `"Seat Finder"`.
 - **D-14:** Theme color = `#2b2d42` (navy). Background color = `#edf2f4` (light gray). Matches the existing app card + overlay card palette.
 - **D-15:** Icon = flat red teardrop pin (matching the assigned-table pin used in `MapView`) on a white rounded-square background with proper maskable safe zone. Required sizes: 192×192, 512×512, maskable 512×512. Script the generation from a single source SVG (`scripts/generate-pwa-icons.mjs` using `sharp`, which is already installed from Phase 3). Apple touch icon = 180×180 derived from the same source, centered with no mask (iOS handles its own rounding).
 - **D-16:** Splash screens on iOS are derived from `apple-touch-icon` + background color — do not hand-author per-device splash PNGs.

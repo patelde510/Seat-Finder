@@ -83,7 +83,7 @@ function App() {
       <div className="app-container" style={{ backgroundImage: `url(${backgroundImage})` }}>
         <div className="card">
           <h1 className="title">Seat Finder</h1>
-            <p className="subtitle">Mahek & Saumya's Reception</p>
+            <p className="subtitle">Digna & Jay's Reception</p>
           <div className="loading">Loading guest list...</div>
         </div>
       </div>
@@ -95,7 +95,7 @@ function App() {
       <div className="app-container" style={{ backgroundImage: `url(${backgroundImage})` }}>
         <div className="card">
           <h1 className="title">Seat Finder</h1>
-          <p className="subtitle">Mahek & Saumya's Wedding</p>
+          <p className="subtitle">Digna & Jay's Wedding</p>
           <div className="error">{error}</div>
           <button className="retry-button" onClick={loadGuests}>
             Retry
@@ -109,7 +109,7 @@ function App() {
     <div className="app-container" style={{ backgroundImage: `url(${backgroundImage})` }}>
       <div className="card">
         <h1 className="title">Seat Finder</h1>
-        <p className="subtitle">Mahek &amp; Saumya&apos;s<br />Reception</p>
+        <p className="subtitle">Digna &amp; Jay&apos;s<br />Reception</p>
         <p className="welcome-text">Welcome!</p>
         <p className="welcome-text">Please enter your name to find your table.</p>
         <StalenessBadge fetchedAt={fetchedAt} onRefresh={loadGuests} />

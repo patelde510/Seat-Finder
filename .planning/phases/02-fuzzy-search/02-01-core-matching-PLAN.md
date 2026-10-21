@@ -22,7 +22,7 @@ objective: "Install Fuse.js, build tiered ranking search utility, and wire it in
 must_haves:
   truths:
     - "Typing 'Smih' returns 'Smith' in the top results (typo tolerance)"
-    - "Typing 'Mah' returns 'Mahek Patel' ranked above any fuzzy-only match (tiered ranking)"
+    - "Typing 'Dig' returns 'Digna' ranked above any fuzzy-only match (tiered ranking)"
     - "Results update on each keystroke with no blocking work over ~1ms"
     - "Empty/whitespace-only query yields empty result set"
     - "Result set is capped at 10 entries"
@@ -191,7 +191,7 @@ Per RESEARCH.md Pattern 2 and CONTEXT.md locked decisions:
 Verification cases (manually reasoned; no test harness added this phase):
   - `searchGuests('', guests, fuse)` → `[]`
   - `searchGuests('   ', guests, fuse)` → `[]`
-  - `searchGuests('Mah', [Mahek Patel, Rhea Mahal, Max Patel], fuse)` → `[Mahek Patel, Rhea Mahal, Max Patel]` (prefix, contains, fuzzy)
+  - `searchGuests('Dig', buildGuestIndex([Digna, Rhea Adiga, ...]))` → Digna ranks above contains matches
   - `searchGuests('Smih', [Smith, ...], fuse)` → Smith appears in results (fuzzy tier) with `matches` containing firstName or lastName indices
   - Result length never exceeds 10.
   </behavior>
@@ -276,7 +276,7 @@ Verification cases (manually reasoned; no test harness added this phase):
 - Old substring filter logic (fullName / reverseFullName / `.includes`) is fully deleted.
 - `searchResults` state is `RankedGuest[]`.
 - Build + lint green. The app still renders the dropdown for matching guests (legacy shape via `.map(r => r.guest)`), but now backed by fuzzy matching + tiered ranking.
-- Manual smoke (developer, not automated): `npm run dev`, type "Smih" → Smith appears; type "Mah" → Mahek Patel ranked first.
+- Manual smoke (developer, not automated): `npm run dev`, type "Smih" → Smith appears; type "Dig" → Digna ranked first.
   </done>
 </task>
 
@@ -285,12 +285,12 @@ Verification cases (manually reasoned; no test harness added this phase):
 <verification>
 - `npm run build` passes (tsc strict + vite).
 - `npm run lint` passes with `--max-warnings 0`.
-- Manual: dev server loads; search for "Smih" returns Smith; search for "Mah" ranks Mahek first; empty input yields empty dropdown; result list never exceeds 10 entries.
+- Manual: dev server loads; search for "Smih" returns Smith; search for "Dig" ranks Digna first; empty input yields empty dropdown; result list never exceeds 10 entries.
 - `contactInfo` / `description` text (e.g. "bride's side") does NOT return any guest when searched.
 </verification>
 
 <success_criteria>
-- SRCH-01: Fuzzy search returns the correct guest for 1-2 char typos (verified manually via "Smih" → "Smith", "Mahke" → "Mahek").
+- SRCH-01 verification cases: fuzzy search returns the correct guest for "Smih" → "Smith", "Dina" → "Digna", and "Jayy" → "Jay".
 - SRCH-02: `handleSearch` is invoked per keystroke behind the existing 150ms debounce and completes sub-millisecond at n≈200.
 - SRCH-03 (data layer): Tiered algorithm in `searchGuests.ts` guarantees prefix > contains > fuzzy ordering with 10-result cap. Visible ranking in UI confirmed in Plan 02.
 - SRCH-04 (data path): `query` state is available in App for Plan 02 to render the no-results copy. This plan intentionally does not render the copy itself.
@@ -306,5 +306,5 @@ After completion, create `.planning/phases/02-fuzzy-search/02-01-SUMMARY.md` doc
 - Fuse.js version installed
 - Final `searchGuests.ts` signature and tier algorithm notes
 - Any deviations from RESEARCH.md Pattern 2
-- Manual smoke test results (Smih, Mah, empty, xyz)
+- Manual smoke test results (Smih, Dig, empty, xyz)
 </output>

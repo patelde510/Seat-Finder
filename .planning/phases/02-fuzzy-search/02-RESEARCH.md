@@ -42,7 +42,7 @@ At n≈200 and queries firing on every keystroke behind a 150ms debounce, index 
 
 | ID | Description | Research Support |
 |----|-------------|------------------|
-| SRCH-01 | Fuzzy matching handles typos & mobile-keyboard errors | Fuse.js threshold=0.3 + ignoreLocation=true handles single/double-char errors (transpositions, adjacent-key slips). "Smih"→"Smith", "Mahke"→"Mahek" verified pattern. |
+| SRCH-01 | Fuzzy matching handles typos & mobile-keyboard errors | Fuse.js threshold=0.3 + ignoreLocation=true handles single/double-char errors (transpositions, adjacent-key slips). Updated examples: "Smih"→"Smith", "Dina"→"Digna", and "Jayy"→"Jay". |
 | SRCH-02 | Search-as-you-type | Existing 150ms debounce in `SearchForm.tsx` preserved; min query length = 1 char. At n≈200 Fuse query is <1ms. |
 | SRCH-03 | Sensible ranking (best match first) | Tiered algorithm: substring-prefix > substring-contains > Fuse fuzzy score ascending. Deterministic and capped at 10. |
 | SRCH-04 | Clear "no results" message | Rendered in `GuestDropdown` (or `App.tsx`) when `query.trim().length > 0 && results.length === 0`. |
@@ -218,11 +218,11 @@ In `GuestDropdown`, look up each row's `matches` by key (`firstName` / `lastName
 **Trade-off:** This is a deliberate asymmetry — substring is cheap and deterministic at 1 char; fuzzy is noisy at 1 char.
 
 ### Pitfall 3: iOS Safari autocorrect & capitalization
-**What goes wrong:** iOS auto-capitalizes the first letter and may autocorrect "mahek" → "make". With `autocomplete="off"` already set, autocorrect/autocapitalize may still run.
+**What goes wrong:** iOS may autocorrect an uncommon guest name to a common word. With `autocomplete="off"` already set, autocorrect/autocapitalize may still run.
 **How to avoid:** Add `autoCorrect="off"`, `autoCapitalize="off"`, `spellCheck={false}` to the search input. Case is already normalized via `.toLowerCase()` so capitalization alone is harmless, but autocorrect can silently rewrite input.
 
 ### Pitfall 4: Unicode / diacritics (Indian names with accents)
-**What goes wrong:** Fuse compares raw code points. "Saumyā" (with macron) will not match "Saumya" and vice-versa.
+**What goes wrong:** Fuse compares raw code points, so a diacritic variant of a guest name may not match its unaccented spelling and vice versa.
 **How to avoid:** If guest data or user input contains diacritics, normalize both sides with `.normalize('NFD').replace(/[\u0300-\u036f]/g, '')` before indexing and querying. The guest data in this project (sampled from `googleSheets.ts` flow) is plain ASCII, so this is likely a no-op — but add the normalization layer defensively; it costs nothing at n=200. [ASSUMED: guest list ASCII-only — worth a quick grep confirmation during implementation]
 
 ### Pitfall 5: `FuseResult.matches[].indices` shape surprise
@@ -361,9 +361,9 @@ export default function GuestDropdown({ results, query, onSelect }: GuestDropdow
 ### Phase Requirements → Test Map
 | Req ID | Behavior | Test Type | Automated Command | File Exists? |
 |--------|----------|-----------|-------------------|-------------|
-| SRCH-01 | "Smih" → "Smith" returns correct guest; "Mahke" → "Mahek" returns correct guest | unit (searchGuests) | `npx vitest run src/services/searchGuests.test.ts -t "typo tolerance"` | ❌ Wave 0 |
+| SRCH-01 | "Smih" → "Smith", "Dina" → "Digna", and "Jayy" → "Jay" return the correct guests | unit (searchGuests) | `npx vitest run src/services/searchGuests.test.ts -t "typo tolerance"` | ❌ Wave 0 |
 | SRCH-02 | Debounce wires Fuse call; `handleSearch('m')` returns prefix-"m" guests immediately | unit + manual smoke (debounce timing is trivial to miss in unit tests; verify via dev server) | `npx vitest run src/services/searchGuests.test.ts -t "prefix query"` + manual | ❌ Wave 0 |
-| SRCH-03 | "Mah" ranks "Mahek Patel" (prefix) above "Rhea Mahal" (contains) above fuzzy-matched "Max Patel" | unit | `npx vitest run src/services/searchGuests.test.ts -t "tier ordering"` | ❌ Wave 0 |
+| SRCH-03 | "Dig" ranks "Digna" (prefix) above "Rhea Adiga" (contains) | unit | `npx vitest run src/services/searchGuests.test.ts -t "tier ordering"` | ❌ Wave 0 |
 | SRCH-04 | Empty query → empty results; "xyz" → no-results message rendered | unit + component render | `npx vitest run src/services/searchGuests.test.ts -t "no results"` | ❌ Wave 0 |
 
 Manual-only (justified): Highlighting visual correctness, iOS Safari autocorrect behavior, mobile-keyboard typo UX — require real device or DOM render inspection. Cover in human UAT.

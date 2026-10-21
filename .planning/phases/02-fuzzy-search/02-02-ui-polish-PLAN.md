@@ -20,7 +20,7 @@ objective: "Add HighlightedText component, extend GuestDropdown to render ranked
 
 must_haves:
   truths:
-    - "Query 'mah' renders 'Mahek Patel' with bold on the 'Mah' prefix in the dropdown"
+    - "Query 'dig' renders 'Digna' with bold on the 'Dig' prefix in the dropdown"
     - "Query 'xyz' (no matches) renders: No guests match 'xyz'. Check spelling or try last name only."
     - "Empty / whitespace query shows no dropdown (no empty card flash)"
     - "Dropdown shows up to 10 results with best match first"
@@ -264,16 +264,16 @@ Start dev server: `npm run dev`. Verify each case on desktop (Chrome) AND one mo
 
 **SRCH-01 (typo tolerance):**
   1. Type `Smih` — a guest named "Smith" (or closest) appears in the dropdown within 10 results.
-  2. Type `Mahke` — "Mahek Patel" appears.
-  3. Type `Saumy` — "Saumya" appears in the top 3.
+  2. Type `Dina` — "Digna" appears.
+  3. Type `Jayy` — "Jay" appears in the top 3.
 
 **SRCH-02 (search-as-you-type):**
-  4. Clear the input, then type `M`, `Ma`, `Mah`, `Mahe`, `Mahek` one character at a time. Results update visibly at each keystroke (debounced 150ms — expect a barely-perceptible delay, not a freeze).
+  4. Clear the input, then type `D`, `Di`, `Dig`, `Dign`, `Digna` one character at a time. Results update visibly at each keystroke (debounced 150ms — expect a barely-perceptible delay, not a freeze).
   5. On mobile: no noticeable lag typing a 5-char name on a real phone over WiFi.
 
 **SRCH-03 (ranking + highlighting):**
-  6. Type `Mah` — "Mahek Patel" (prefix match) appears ABOVE any "Rhea Mahal"-style contains match and any fuzzy-only match like "Max Patel".
-  7. The letters `Mah` are visibly bolded inside the rendered name. Both first- and last-name hits bold correctly when applicable.
+  6. Type `Dig` — "Digna" (prefix match) appears ABOVE any "Rhea Adiga"-style contains match and any fuzzy-only match.
+  7. The letters `Dig` are visibly bolded inside the rendered name. Both first- and last-name hits bold correctly when applicable.
   8. Dropdown never shows more than 10 entries even for broad queries like `a`.
 
 **SRCH-04 (no results):**
@@ -299,7 +299,7 @@ Start dev server: `npm run dev`. Verify each case on desktop (Chrome) AND one mo
 </verification>
 
 <success_criteria>
-- **SRCH-01:** Typos like `Smih`, `Mahke`, `Saumy` return the correct guest (human-verified).
+- **SRCH-01:** Typos like `Smih`, `Dina`, and `Jayy` return the correct guest (human-verified).
 - **SRCH-02:** Results update per keystroke with no perceptible lag on a real phone (human-verified).
 - **SRCH-03:** Best match appears first; prefix > contains > fuzzy ordering visible; matched chars bolded via React-children HighlightedText (human-verified + build-verified).
 - **SRCH-04:** `xyz` query renders the exact locked copy; empty input renders nothing (human-verified).

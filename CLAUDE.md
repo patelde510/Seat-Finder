@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Seat-Finder is a mobile-friendly seat-lookup app for the wedding of Mahek & Saumya in Newport News, VA. The app allows guests to:
+Seat-Finder is a mobile-friendly seat-lookup app for the wedding of Digna & Jay in Newport News, VA. The app allows guests to:
 - Scan a QR code to access the app
 - Search for their name
 - View their assigned table number
@@ -41,7 +41,7 @@ Since this repository is in early stages, establish:
 
 **Seat-Finder**
 
-A mobile-first wedding guest seating app for Mahek & Saumya's reception in Newport News, VA. Guests scan a QR code, search for their name, see their table number, and get an animated visual guide showing exactly where their table is on the venue floor plan. The app prioritizes speed and simplicity during high-throughput check-in.
+A mobile-first wedding guest seating app for Digna & Jay's reception in Newport News, VA. Guests scan a QR code, search for their name, see their table number, and get an animated visual guide showing exactly where their table is on the venue floor plan. The app prioritizes speed and simplicity during high-throughput check-in.
 
 **Core Value:** A guest finds their table in under 10 seconds — search, see the number, see it on the map, walk there.
 

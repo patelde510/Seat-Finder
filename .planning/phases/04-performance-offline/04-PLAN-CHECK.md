@@ -43,7 +43,7 @@ Once B-1 and B-2 are resolved, plans are ready for `/gsd-execute-phase 04`.
 | D-10     | cache > 24h AND network fails → existing error card with specific copy                         | 04-02             | PARTIAL — error message matches `/24 hours/` but exact copy ("Ask staff for directions…") not enforced; see **W-3** |
 | D-11     | No proactive install prompt                                                                   | (negative)        | COVERED by absence — no install-prompt task present in any plan |
 | D-12     | iOS meta tags (`apple-touch-icon`, capable, status-bar-style)                                 | 04-05             | COVERED |
-| D-13     | App name "Seat Finder — Mahek & Saumya", short_name "Seat Finder"                             | 04-05             | COVERED (correct literals) — but plan cites "D-09" instead of D-13 (**I-1**) |
+| D-13     | App name "Seat Finder — Digna & Jay", short_name "Seat Finder"                             | 04-05             | COVERED (correct literals) — but plan cites "D-09" instead of D-13 (**I-1**) |
 | D-14     | Theme color `#2b2d42`; background color `#edf2f4` (LIGHT GRAY)                                | 04-05             | **BLOCKER B-1** — plan sets `background_color: '#2b2d42'`, contradicting CONTEXT D-14 |
 | D-15     | Icon = red teardrop pin; 192 + 512 + 512-maskable + 180 apple-touch; script via sharp          | 04-03             | COVERED — but plan cites "D-10/D-11/D-12" instead of D-15 (**I-1**) |
 | D-16     | No per-device iOS splash PNGs                                                                 | (negative)        | COVERED by absence |
@@ -276,7 +276,7 @@ Your guest list is more than 24 hours old and we cannot reach the server. Please
 
 **Where:** `04-05-PLAN.md` lines 24–26:
 ```yaml
-- "VitePWA manifest.name is exactly 'Seat Finder — Mahek & Saumya' (D-09)"
+- "VitePWA manifest.name is exactly 'Seat Finder — Digna & Jay' (D-09)"
 - "VitePWA manifest.short_name is exactly 'Seat Finder' (D-09)"
 - "VitePWA manifest.theme_color and background_color are both '#2b2d42' (D-11)"
 ```

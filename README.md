@@ -1,6 +1,6 @@
 # Seat-Finder
 
-A streamlined, mobile-friendly seat-lookup app built for the wedding of Mahek & Saumya in Newport News, VA. Guests can scan a QR code or NFC tag, search their name, and instantly view their assigned table number with a personalized message.
+A streamlined, mobile-friendly seat-lookup app built for the wedding of Digna & Jay in Newport News, VA. Guests can scan a QR code or NFC tag, search their name, and instantly view their assigned table number with a personalized message.
 
 ## Features
 
@@ -222,8 +222,8 @@ The app is configured with:
 
 ## License
 
-Private project for Mahek & Saumya's wedding.
+Private project for Digna & Jay's wedding.
 
 ---
 
-Built with ❤️ for Mahek & Saumya's special day!
+Built with ❤️ for Digna & Jay's special day!

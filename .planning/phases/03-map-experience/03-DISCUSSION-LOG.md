@@ -27,7 +27,7 @@
 
 | Option | Description | Selected |
 |--------|-------------|----------|
-| Overlay card on the map (Recommended) | Small non-intrusive card pinned at the top of the full-screen map: 'Welcome, Mahek! — Table 7'. Description below. Map is hero; personal touch survives. | ✓ |
+| Overlay card on the map (Recommended) | Small non-intrusive card pinned at the top of the full-screen map: 'Welcome, Digna! — Table 7'. Description below. Map is hero; personal touch survives. | ✓ |
 | Brief intro → fade | Show greeting as a ~1.2s full-bleed intro, then fade into the map. Dramatic but adds a beat. | |
 | Drop greeting, map only | No greeting card. Table number as badge. Fastest, but loses personal moment. | |
 

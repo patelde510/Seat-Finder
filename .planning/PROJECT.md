@@ -2,7 +2,7 @@
 
 ## What This Is
 
-A mobile-first wedding guest seating app for Mahek & Saumya's reception in Newport News, VA. Guests scan a QR code, search for their name, see their table number, and get an animated visual guide showing exactly where their table is on the venue floor plan. The app prioritizes speed and simplicity during high-throughput check-in.
+A mobile-first wedding guest seating app for Digna & Jay's reception in Newport News, VA. Guests scan a QR code, search for their name, see their table number, and get an animated visual guide showing exactly where their table is on the venue floor plan. The app prioritizes speed and simplicity during high-throughput check-in.
 
 ## Core Value
 

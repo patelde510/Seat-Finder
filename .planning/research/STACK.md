@@ -31,7 +31,7 @@ npm install react-zoom-pan-pinch
 
 | Technology | Version | Purpose | Why |
 |------------|---------|---------|-----|
-| uFuzzy | ^1.0.x | Replace the current `.includes()` search with fuzzy matching | uFuzzy is ~4 KB (vs Fuse.js ~15 KB gzipped). Its matching model — exact prefix/infix/suffix order is preserved — produces the right results for names: "Mahek" still ranks above "Meahk". Fuse.js's default scoring is documented to produce "bizarre matches" and poor ordering unless heavily tuned. For a ~200-guest list that never changes, uFuzzy's simple API (no index, just `search(haystack, needle)`) is sufficient and adds no build complexity. |
+| uFuzzy | ^1.0.x | Replace the current `.includes()` search with fuzzy matching | uFuzzy is ~4 KB (vs Fuse.js ~15 KB gzipped). Its matching model — exact prefix/infix/suffix order is preserved — produces the right results for names: "Digna" still ranks above "Meahk". Fuse.js's default scoring is documented to produce "bizarre matches" and poor ordering unless heavily tuned. For a ~200-guest list that never changes, uFuzzy's simple API (no index, just `search(haystack, needle)`) is sufficient and adds no build complexity. |
 
 **Confidence:** MEDIUM — library confirmed active on npm. Size/quality comparison confirmed via multiple community sources (HN thread, npm-compare). Bundle size figures sourced from bundlephobia (Fuse.js 6.6.2) and the uFuzzy README.
 

@@ -253,7 +253,7 @@ This section is non-template — added because Phase 3 introduces several new vi
 ```
 ┌─────────────────────────────────────────────────┐  z=50  map surface (#000)
 │ ┌─safe-area-top──────────────────────┐  ┌──×──┐ │  z=110 close
-│ │  Welcome, Mahek! — Table 12        │  │     │ │
+│ │  Welcome, Digna! — Table 12        │  │     │ │
 │ │  Bride                              │  └─────┘ │  z=100 overlay card
 │ └─────────────────────────────────────┘         │
 │                                                 │

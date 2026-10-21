@@ -13,7 +13,7 @@ status: complete
 
 ## UAT results (SRCH-01..04)
 User-verified "everything else looks good" after inline sign-off on the full checklist:
-- SRCH-01 typos (Smih / Mahke / Saumy) — pass
+- SRCH-01 typo examples must be re-verified against the updated guest names (Smih → Smith, Dina → Digna, Jayy → Jay).
 - SRCH-02 search-as-you-type — pass
 - SRCH-03 ranking + bold highlights — pass
 - SRCH-04 no-results copy exact match — pass

@@ -24,7 +24,7 @@ The recommended integration is: (1) add `vite-plugin-pwa` with `registerType: 'p
 - **D-06** Toast is suppressed (hidden) while MapView is open to avoid visual conflict with the pan/zoom canvas.
 - **D-07** Offline indicator: silent when cache is fresh (<1h) and online; show "Updated Xm ago" badge when cache >1h old OR `navigator.onLine === false`.
 - **D-08** No proactive install prompt — rely on browser-native install UX (address-bar icon / iOS share sheet).
-- **D-09** PWA name: "Seat Finder — Mahek & Saumya". Short name: "Seat Finder".
+- **D-09** PWA name: "Seat Finder — Digna & Jay". Short name: "Seat Finder".
 - **D-10** Branding: red teardrop pin icon, fill `#d90429`, white stroke, reusing MapView's inline SVG shape (FloorPlan.tsx:87-104).
 - **D-11** Theme color: `#2b2d42` (navy). Background color: `#2b2d42` to match splash.
 - **D-12** Icon sizes: 192×192, 512×512 normal, 512×512 maskable. Apple touch: 180×180.
@@ -282,9 +282,9 @@ export default defineConfig({
       ],
 
       manifest: {
-        name: 'Seat Finder — Mahek & Saumya',
+        name: 'Seat Finder — Digna & Jay',
         short_name: 'Seat Finder',
-        description: "Find your table at Mahek & Saumya's wedding reception.",
+        description: "Find your table at Digna & Jay's wedding reception.",
         theme_color: '#2b2d42',
         background_color: '#2b2d42',
         display: 'standalone',
@@ -783,7 +783,7 @@ Exact tags to add to `index.html` `<head>`:
 <!-- Existing -->
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<title>Seat Finder — Mahek & Saumya</title>
+<title>Seat Finder — Digna & Jay</title>
 
 <!-- Theme / branding -->
 <meta name="theme-color" content="#2b2d42" />

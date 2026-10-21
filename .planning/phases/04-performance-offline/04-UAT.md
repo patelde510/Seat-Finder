@@ -14,7 +14,7 @@ This UAT covers the PHYSICAL behaviors that require a real device / real network
 
 ## Prerequisites
 
-- [ ] `VITE_SHEET_URL` is set in `.env.local` (pointing to the real Mahek & Saumya sheet)
+- [ ] `VITE_SHEET_URL` is set in `.env.local` (pointing to the real Digna & Jay sheet)
 - [ ] `npm run build` completes without error — final line is `PWA build verification passed.`
 - [ ] `npm run preview` serves the app at `http://localhost:4173`
 - [ ] Deploy target is reachable (or use `npm run preview` over a LAN IP accessible by phone — iOS requires HTTPS for the SW to register, so either deploy to the real host or use `ngrok http 4173` / `cloudflared tunnel --url http://localhost:4173` for the LAN test)
