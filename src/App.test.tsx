@@ -79,9 +79,15 @@ describe('App', () => {
     expect(preload.type).toBe('image/avif');
 
     const srcset = preload.getAttribute('imagesrcset') ?? '';
-    expect(srcset).toContain('/floor-plan/floor-plan-900.avif 900w');
-    expect(srcset).toContain('/floor-plan/floor-plan-1600.avif 1600w');
-    expect(srcset).toContain('/floor-plan/floor-plan-2400.avif 2400w');
+    expect(srcset).toContain(
+      `${import.meta.env.BASE_URL}floor-plan/floor-plan-900.avif 900w`,
+    );
+    expect(srcset).toContain(
+      `${import.meta.env.BASE_URL}floor-plan/floor-plan-1600.avif 1600w`,
+    );
+    expect(srcset).toContain(
+      `${import.meta.env.BASE_URL}floor-plan/floor-plan-2400.avif 2400w`,
+    );
 
     expect(preload.getAttribute('imagesizes')).toBe('100vw');
     // fetchPriority DOM property — widely supported in jsdom 25+

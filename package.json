@@ -4,15 +4,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build && node scripts/verify-pwa-build.mjs && node scripts/verify-setup-split.mjs",
+    "build": "tsc && vite build && node scripts/create-pages-fallback.mjs && node scripts/verify-pwa-build.mjs && node scripts/verify-setup-split.mjs",
     "preview": "vite preview",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "test": "vitest run",
     "test:watch": "vitest",
     "generate-images": "node scripts/generate-images.mjs",
-    "generate-pwa-icons": "node scripts/generate-pwa-icons.mjs",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "generate-pwa-icons": "node scripts/generate-pwa-icons.mjs"
   },
   "dependencies": {
     "fuse.js": "^7.3.0",
@@ -35,7 +33,6 @@
     "eslint": "^9.15.0",
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.14",
-    "gh-pages": "^6.3.0",
     "jsdom": "^26.1.0",
     "sharp": "^0.34.5",
     "tesseract.js": "^7.0.0",

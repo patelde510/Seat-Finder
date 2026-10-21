@@ -107,6 +107,11 @@ describe('<Root /> pathname dispatch', () => {
     // Guest surface is NOT mounted.
     expect(screen.queryByText('Seat Finder')).toBeNull();
   });
+
+  it('dispatches <SetupApp /> on the GitHub Pages project path', () => {
+    renderRootAt(`${import.meta.env.BASE_URL}setup`);
+    expect(screen.getByText(/Loading setup tool/)).toBeInTheDocument();
+  });
 });
 
 describe('static-import invariant (D-01)', () => {

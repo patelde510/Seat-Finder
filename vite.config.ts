@@ -2,6 +2,8 @@ import { defineConfig, type Plugin, type ResolvedConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
 
+const base = '/Seat-Finder/';
+
 // Fails the production build if VITE_SHEET_URL is missing (D-18). The service
 // module's module-load guard covers the runtime case; this plugin converts that
 // into a hard CI failure before the bundle ships.
@@ -12,7 +14,7 @@ function requireSheetUrl(): Plugin {
       if (config.command === 'build' && !process.env.VITE_SHEET_URL) {
         throw new Error(
           'Build failed: VITE_SHEET_URL env var is required for production build. ' +
-          'Set it in your hosting platform (Vercel/Netlify/etc.) or local shell before running `npm run build`.'
+          'Set the VITE_SHEET_URL GitHub Actions secret or provide it in your local shell before running `npm run build`.'
         );
       }
     },
@@ -40,12 +42,12 @@ export default defineConfig({
         background_color: '#edf2f4',
         display: 'standalone',
         orientation: 'portrait',
-        start_url: '/',
-        scope: '/',
+        start_url: base,
+        scope: base,
         icons: [
-          { src: '/pwa-192.png',          sizes: '192x192', type: 'image/png' },
-          { src: '/pwa-512.png',          sizes: '512x512', type: 'image/png' },
-          { src: '/pwa-512-maskable.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
+          { src: `${base}pwa-192.png`,          sizes: '192x192', type: 'image/png' },
+          { src: `${base}pwa-512.png`,          sizes: '512x512', type: 'image/png' },
+          { src: `${base}pwa-512-maskable.png`, sizes: '512x512', type: 'image/png', purpose: 'maskable' },
         ],
       },
 
@@ -70,7 +72,7 @@ export default defineConfig({
         ],
 
         // SPA navigation fallback — but never for the Sheets host.
-        navigateFallback: '/index.html',
+        navigateFallback: `${base}index.html`,
         navigateFallbackDenylist: [
           new RegExp('^https://docs\\.google\\.com/'),
         ],
@@ -78,7 +80,8 @@ export default defineConfig({
         runtimeCaching: [
           // Floor plan image variants — long-lived, rarely change.
           {
-            urlPattern: ({ url }) => url.pathname.startsWith('/floor-plan/'),
+            urlPattern: ({ url }) =>
+              url.pathname.startsWith('/Seat-Finder/floor-plan/'),
             handler: 'CacheFirst',
             options: {
               cacheName: 'floor-plan-images-v2',
@@ -115,5 +118,5 @@ export default defineConfig({
       },
     }),
   ],
-  base: '/Seat-Finder/',
+  base,
 });

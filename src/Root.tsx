@@ -23,7 +23,7 @@ const SetupApp = lazy(() => import('./setup/SetupApp'));
 export default function Root(): JSX.Element {
   const pathname = window.location.pathname;
 
-  if (pathname === '/setup') {
+  if (pathname === '/setup' || pathname === `${import.meta.env.BASE_URL}setup`) {
     return (
       <Suspense
         fallback={<div className="setup-loading">Loading setup tool...</div>}

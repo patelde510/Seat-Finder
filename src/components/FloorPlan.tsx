@@ -36,13 +36,14 @@ interface FloorPlanProps {
 
 const defaultConfig: FloorPlanConfig = floorPlanConfig;
 
+const BASE_URL = import.meta.env.BASE_URL;
 const AVIF_SRCSET =
-  '/floor-plan/floor-plan-900.avif 900w, /floor-plan/floor-plan-1600.avif 1600w, /floor-plan/floor-plan-2400.avif 2400w';
+  `${BASE_URL}floor-plan/floor-plan-900.avif 900w, ${BASE_URL}floor-plan/floor-plan-1600.avif 1600w, ${BASE_URL}floor-plan/floor-plan-2400.avif 2400w`;
 const WEBP_SRCSET =
-  '/floor-plan/floor-plan-900.webp 900w, /floor-plan/floor-plan-1600.webp 1600w, /floor-plan/floor-plan-2400.webp 2400w';
+  `${BASE_URL}floor-plan/floor-plan-900.webp 900w, ${BASE_URL}floor-plan/floor-plan-1600.webp 1600w, ${BASE_URL}floor-plan/floor-plan-2400.webp 2400w`;
 const PNG_SRCSET =
-  '/floor-plan/floor-plan-900.png 900w, /floor-plan/floor-plan-1600.png 1600w, /floor-plan/floor-plan-2400.png 2400w';
-const PNG_FALLBACK_SRC = '/floor-plan/floor-plan-1600.png';
+  `${BASE_URL}floor-plan/floor-plan-900.png 900w, ${BASE_URL}floor-plan/floor-plan-1600.png 1600w, ${BASE_URL}floor-plan/floor-plan-2400.png 2400w`;
+const PNG_FALLBACK_SRC = `${BASE_URL}floor-plan/floor-plan-1600.png`;
 
 /**
  * Returns one warning string per duplicate (x,y) coordinate pair in the

@@ -70,6 +70,25 @@ npm run build         # Type-check, bundle, and verify PWA artifacts
 npm run preview       # Serve dist/ locally (test the built PWA)
 ```
 
+## Deploy to GitHub Pages
+
+The `master` branch is deployed automatically by
+`.github/workflows/deploy-pages.yml` whenever it is pushed. The workflow builds
+the app and publishes `dist/` using GitHub Pages' Actions deployment.
+
+One-time repository setup:
+
+1. In **Settings → Pages**, set **Build and deployment → Source** to **GitHub
+   Actions**.
+2. In **Settings → Secrets and variables → Actions**, create the repository
+   secret `VITE_SHEET_URL` with the published Google Sheets CSV URL. The
+   workflow requires this value to build the guest list integration.
+
+The project site URL is `https://<owner>.github.io/Seat-Finder/`. The app,
+PWA assets, and `/setup` route are configured to work beneath that project
+path. You can also start a deployment manually from the workflow's
+**Actions → Deploy to GitHub Pages → Run workflow** control.
+
 ## PWA behavior
 
 - First load fetches the guest list from Google Sheets and caches it in

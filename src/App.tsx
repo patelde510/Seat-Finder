@@ -40,7 +40,7 @@ function App() {
     link.type = 'image/avif';
     link.setAttribute(
       'imagesrcset',
-      '/floor-plan/floor-plan-900.avif 900w, /floor-plan/floor-plan-1600.avif 1600w, /floor-plan/floor-plan-2400.avif 2400w',
+      `${import.meta.env.BASE_URL}floor-plan/floor-plan-900.avif 900w, ${import.meta.env.BASE_URL}floor-plan/floor-plan-1600.avif 1600w, ${import.meta.env.BASE_URL}floor-plan/floor-plan-2400.avif 2400w`,
     );
     link.setAttribute('imagesizes', '100vw');
     (link as HTMLLinkElement & { fetchPriority: string }).fetchPriority = 'high';
@@ -136,7 +136,7 @@ function App() {
         )}
       </div>
       <img
-        src="/floor-plan/floor-plan-1600.avif"
+        src={`${import.meta.env.BASE_URL}floor-plan/floor-plan-1600.avif`}
         style={{ display: 'none' }}
         aria-hidden="true"
         alt=""
