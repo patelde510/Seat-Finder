@@ -2,7 +2,7 @@ import { defineConfig, type Plugin, type ResolvedConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
 
-const base = '/Seat-Finder/';
+const base = '/';
 
 // Fails the production build if VITE_SHEET_URL is missing (D-18). The service
 // module's module-load guard covers the runtime case; this plugin converts that
@@ -81,7 +81,7 @@ export default defineConfig({
           // Floor plan image variants — long-lived, rarely change.
           {
             urlPattern: ({ url }) =>
-              url.pathname.startsWith('/Seat-Finder/floor-plan/'),
+              url.pathname.startsWith('/floor-plan/'),
             handler: 'CacheFirst',
             options: {
               cacheName: 'floor-plan-images-v2',
