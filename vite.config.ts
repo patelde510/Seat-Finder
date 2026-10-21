@@ -115,4 +115,5 @@ export default defineConfig({
       },
     }),
   ],
+  base: '/Seat-Finder/',
 });
