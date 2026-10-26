@@ -8,7 +8,7 @@ import GuestDropdown from './components/GuestDropdown';
 import MapView from './components/MapView';
 import StalenessBadge from './components/StalenessBadge';
 import UpdateToast from './components/UpdateToast';
-import backgroundImage from './assets/mahsompw-6074Z70_6074.jpeg';
+import backgroundImage from './assets/Digna-jay-background.jpg';
 import './App.css';
 
 function App() {
