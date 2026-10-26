@@ -64,10 +64,12 @@
   touch-action: none;
 }
 
-/* Content sizes itself to its child (.floor-plan-wrapper), which is
-   aspect-locked and covers the viewport. Using auto + min-100% lets the
-   wrapper dictate width/height while still filling when smaller. */
+/* Keep the transform content at least viewport-sized while centering the
+   aspect-locked floor plan within it. */
 .map-transform-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: auto;
   height: auto;
   min-width: 100%;
