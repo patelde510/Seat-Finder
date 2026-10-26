@@ -54,7 +54,7 @@ export default defineConfig({
       workbox: {
         // Precache ONLY the app shell — no floor-plan images (they go via runtime rules).
         globPatterns: ['**/*.{js,css,html,svg,ico,woff2}'],
-        // - floor-plan/** → runtime CacheFirst rule below.
+        // - floor-plan/** → runtime NetworkFirst rule below.
         // - SetupApp-*.js/.css → route-obscurity admin chunk; OpenCV+Tesseract WASM
         //   bundle blows past the 2 MiB precache limit and is useless to guests who
         //   never visit /setup (D-01, D-02). Workbox's StaleWhileRevalidate runtime
@@ -78,13 +78,14 @@ export default defineConfig({
         ],
 
         runtimeCaching: [
-          // Floor plan image variants — long-lived, rarely change.
+          // Check for updated floor plans on every load; retain a cached copy for offline use.
           {
             urlPattern: ({ url }) =>
               url.pathname.startsWith('/floor-plan/'),
-            handler: 'CacheFirst',
+            handler: 'NetworkFirst',
             options: {
-              cacheName: 'floor-plan-images-v2',
+              cacheName: 'floor-plan-images-v3',
+              fetchOptions: { cache: 'no-store' },
               expiration: {
                 maxEntries: 20,
                 maxAgeSeconds: 60 * 60 * 24 * 30, // 30 days

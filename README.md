@@ -98,7 +98,9 @@ path. You can also start a deployment manually from the workflow's
   times out, the saved list is used as an offline fallback. It hard-expires
   after 24h.
 - Static assets (JS/CSS/fonts/icons) are precached by the service worker;
-  floor-plan images use a CacheFirst runtime rule (30-day TTL).
+  floor-plan images use a network-first runtime rule, bypassing the browser
+  HTTP cache on each load and retaining a cached copy for offline use (30-day
+  TTL).
 - The Google Sheets URL itself is never cached by the service worker. The app
   also bypasses the browser HTTP cache when fetching it; localStorage is used
   only as a fallback if the fresh request fails (`src/services/guestsCache.ts`).
