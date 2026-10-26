@@ -36,6 +36,10 @@ describe('fetchGuestsCached', () => {
     const result = await fetchGuestsCached('http://example/csv');
     expect(result.guests).toHaveLength(1);
     expect(result.guests[0].firstName).toBe('Alice');
+    expect(fetch).toHaveBeenCalledWith(
+      'http://example/csv',
+      expect.objectContaining({ cache: 'no-store' }),
+    );
     expect(localStorage.getItem(CACHE_KEY)).toBeTruthy();
     const stored = JSON.parse(localStorage.getItem(CACHE_KEY)!);
     expect(stored.fetchedAt).toBe(result.fetchedAt);

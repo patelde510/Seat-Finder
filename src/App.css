@@ -28,7 +28,7 @@
 }
 
 .card {
-  background: rgba(255, 255, 255, 0.65);
+  background: rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(10px);
   border-radius: 20px;
   padding: 40px 30px;
@@ -54,8 +54,9 @@
 }
 
 .welcome-text {
+  font-weight: 700;
   text-align: center;
-  color: #666;
+  color: #2b2d42;
   margin-bottom: 30px;
   font-size: 1rem;
 }

@@ -91,14 +91,17 @@ path. You can also start a deployment manually from the workflow's
 
 ## PWA behavior
 
-- First load fetches the guest list from Google Sheets and caches it in
-  `localStorage` under `seatfinder.guests.v1`.
-- Subsequent loads are network-first with a 2-second timeout; if the network
-  is slow or offline, the cached list is served. Cache hard-expires after 24h.
+- Each app launch requests the guest list from Google Sheets with browser HTTP
+  caching disabled, then saves the result in `localStorage` under
+  `seatfinder.guests.v1`.
+- Requests are network-first with a 2-second timeout; if the request fails or
+  times out, the saved list is used as an offline fallback. It hard-expires
+  after 24h.
 - Static assets (JS/CSS/fonts/icons) are precached by the service worker;
   floor-plan images use a CacheFirst runtime rule (30-day TTL).
-- The Google Sheets URL itself is never cached by the service worker —
-  caching for that endpoint is done in the app layer (`src/services/guestsCache.ts`).
+- The Google Sheets URL itself is never cached by the service worker. The app
+  also bypasses the browser HTTP cache when fetching it; localStorage is used
+  only as a fallback if the fresh request fails (`src/services/guestsCache.ts`).
 - A new deploy is detected automatically; the user sees a bottom toast
   ("New version available — Tap to refresh") and can opt in to reload.
 - Guests can add the app to their home screen via the browser's native
